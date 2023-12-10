@@ -24,16 +24,16 @@ typedef struct Lista{
 }lista;
 
 #pragma funkicje
-int Izbornik(Position,lPosition);
+int menu(Position,lPosition);
 int Line(lPosition,Position,Position);
 lPosition FindLast(lPosition);
-int StvoriStablo(Position);
+int maketree(Position);
 Position OpenDirec(Position, lPosition);
 int Push(lPosition ,Position);
 Position FindByName(char*, Position);
-Position ajmo_nazad(Position,lPosition);
-int ispis_dice(Position trenutni);
-int brisanje_stabla(Position);
+Position back(Position,lPosition);
+int printout(Position trenutni);
+int treewipe(Position);
 #pragma end_funkcije
 
 
@@ -61,7 +61,7 @@ int main(){
 }
 
 
-int Izbornik(Position root, lPosition head){
+int menu(Position root, lPosition head){
 
     Position trenutni = root;
     char odabir[MAX_SIZE] = { 0 };
@@ -145,7 +145,7 @@ lPosition FindLast (lPosition head){
 
 
 
-int StvoriStablo(Position trenutni){
+int maketree(Position trenutni){
 
     Position directory;
     directory = (Position)malloc(sizeof(stablo));
@@ -249,7 +249,7 @@ Position FindByName(char *name, Position trenutni){
     else
         return trenutni;
 }
-Position ajmo_nazad(Position trenutni,lPosition ltrenutni){
+Position back(Position trenutni,lPosition ltrenutni){
     Position rjesenje = ltrenutni->next->direktorij;
     lPosition onaj_koga_brisemo = ltrenutni->next;
 
@@ -260,7 +260,7 @@ Position ajmo_nazad(Position trenutni,lPosition ltrenutni){
 }
 
 
-int ispis_dice(Position trenutni){
+int printout(Position trenutni){
     int brojac_datoteka = 0;
     long int ukupna_zazeta_memorija_datoteka = 0;
     if(NULL==trenutni->dite){
@@ -280,7 +280,7 @@ int ispis_dice(Position trenutni){
 
     }
 }
-int brisanje_stabla(Position trenutni){
+int treewipe(Position trenutni){
     if(trenutni==NULL){
         return 0;
     }
